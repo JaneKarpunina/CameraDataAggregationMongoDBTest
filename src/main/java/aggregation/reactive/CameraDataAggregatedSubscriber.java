@@ -6,7 +6,6 @@ import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class CameraDataAggregatedSubscriber implements Subscriber<CameraDataAggregated> {
 
@@ -33,7 +32,7 @@ public class CameraDataAggregatedSubscriber implements Subscriber<CameraDataAggr
         LOGGER.info("Camera data aggregated : {}", element);
 
         //TODO: inject operations in CameraWebClient and give it to this subscriber;try this too
-           cameraDataAggregatedOperations.save(element);
+        cameraDataAggregatedOperations.save(element);
         subscription.request(1);
     }
 

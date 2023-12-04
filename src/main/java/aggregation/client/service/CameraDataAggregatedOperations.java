@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 public class CameraDataAggregatedOperations {
 
 
-    CameraDataAggregatedRepository cameraDataAggregatedRepository;
+    private final CameraDataAggregatedRepository cameraDataAggregatedRepository;
 
     @Autowired
     public CameraDataAggregatedOperations(CameraDataAggregatedRepository cameraDataAggregatedRepository) {
