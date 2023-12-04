@@ -49,12 +49,14 @@
       <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
     </dependency>
     <!-- https://mvnrepository.com/artifact/de.flapdoodle.embed/de.flapdoodle.embed.mongo -->
-    <!-- dependency>
+    <!-- https://mvnrepository.com/artifact/de.flapdoodle.embed/de.flapdoodle.embed.mongo -->
+    <dependency>
       <groupId>de.flapdoodle.embed</groupId>
       <artifactId>de.flapdoodle.embed.mongo</artifactId>
-      <version>4.9.3</version>
+      <version>4.11.1</version>
       <scope>test</scope>
-    </dependency-->
+    </dependency>
+
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-web</artifactId>

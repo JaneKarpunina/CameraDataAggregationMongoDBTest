@@ -21,11 +21,6 @@ public class CamerasController {
     @GetMapping
     public Flux<Camera> listStudents(@RequestParam(name = "id", required = false) Integer id) {
 
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         return cameraService.findCamerasById(id);
     }
 

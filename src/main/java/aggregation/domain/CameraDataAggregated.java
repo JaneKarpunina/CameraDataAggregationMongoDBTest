@@ -1,8 +1,14 @@
 package aggregation.domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class CameraDataAggregated {
+
+    @Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
     CameraSource cameraSource;
 
     TokenData tokenData;

@@ -1,5 +1,7 @@
 package aggregation.reactive;
 
+import aggregation.client.ClientUtils;
+import aggregation.client.service.CameraDataAggregatedOperations;
 import aggregation.domain.Camera;
 import aggregation.domain.CameraDataAggregated;
 import aggregation.domain.CameraSource;
@@ -8,21 +10,26 @@ import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+import org.springframework.context.ApplicationContext;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
+
 
 public class CameraSubscriber implements Subscriber<Camera> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CameraSubscriber.class);
+    //final Subscription subscription;
+
+    Subscriber<CameraDataAggregated> cameraDataAggregatedSubscriber;
+
+    final WebClient client = ClientUtils.webClientWithTimeout();
+    private final CameraDataAggregatedOperations cameraDataAggregatedOperations;
+
     Subscription subscription;
 
-    WebClient client = WebClient.builder()
-            .baseUrl("http://localhost:8080")
-            .defaultCookie("cookieKey", "cookieValue")
-            .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-            .build();
+    public CameraSubscriber(CameraDataAggregatedOperations cameraDataAggregatedOperations) {
+        this.cameraDataAggregatedOperations = cameraDataAggregatedOperations;
+    }
 
     @Override
     public void onSubscribe(Subscription subscription) {
@@ -47,7 +54,8 @@ public class CameraSubscriber implements Subscriber<Camera> {
         Mono<CameraDataAggregated> cameraDataAggregatedMono =
                 Mono.zip(cameraSource, tokenData, CameraDataAggregated::new);
 
-        cameraDataAggregatedMono.subscribe(new CameraDataAggregatedSubscriber());
+        cameraDataAggregatedMono.
+                subscribe(new CameraDataAggregatedSubscriber(cameraDataAggregatedOperations));
         subscription.request(1);
     }
 
@@ -58,6 +66,6 @@ public class CameraSubscriber implements Subscriber<Camera> {
 
     @Override
     public void onComplete() {
-
+        LOGGER.info("Camera data aggregation completed");
     }
 }
