@@ -18,9 +18,6 @@ import reactor.core.publisher.Mono;
 public class CameraSubscriber implements Subscriber<Camera> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CameraSubscriber.class);
-    //final Subscription subscription;
-
-    Subscriber<CameraDataAggregated> cameraDataAggregatedSubscriber;
 
     final WebClient client = ClientUtils.webClientWithTimeout();
     private final CameraDataAggregatedOperations cameraDataAggregatedOperations;

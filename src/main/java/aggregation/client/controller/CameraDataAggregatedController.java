@@ -24,8 +24,10 @@ public class CameraDataAggregatedController {
     }
     @GetMapping
     public Flux<CameraDataAggregated> findCameraDataAggregated() {
-        cameraDataAggregatedOperations.findAll().subscribe(e -> LOGGER.info("in camera aggregated controller {}", e));
-        return cameraDataAggregatedOperations.findAll();
+
+        Flux<CameraDataAggregated> cameraDataAggregatedFlux = cameraDataAggregatedOperations.findAll();
+        cameraDataAggregatedFlux.subscribe(e -> LOGGER.info("in camera aggregated controller {}", e));
+        return cameraDataAggregatedFlux;
     }
 
 

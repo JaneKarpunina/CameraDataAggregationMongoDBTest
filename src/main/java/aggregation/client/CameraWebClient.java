@@ -22,7 +22,6 @@ public class CameraWebClient {
 
     private final WebClient client = ClientUtils.webClientWithTimeout();
 
-    //private final ApplicationContext applicationContext;
     private final CameraDataAggregatedOperations cameraDataAggregatedOperations;
 
     @Autowired

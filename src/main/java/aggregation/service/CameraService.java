@@ -68,18 +68,14 @@ public class CameraService {
 
 
     public Mono<CameraSource> findSourceById(Integer id) {
-      //  if (id != null) {
+
             return Mono.just(sourcesMap.get(id));
-      //  }
-      //  return Flux.fromIterable(sourcesMap.values());
     }
 
     public Mono<TokenData> findTokenDataById(Integer id) {
 
-       // if (id != null) {
             return Mono.just(tokenDataMap.get(id));
-       // }
-       // return Mono.fromIterable(tokenDataMap.values());
+
 
     }
 }

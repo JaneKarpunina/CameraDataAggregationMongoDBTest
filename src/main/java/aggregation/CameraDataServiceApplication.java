@@ -27,20 +27,9 @@ public class CameraDataServiceApplication {
 
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(CameraDataServiceApplication.class);
-	/*@Bean
-	CameraService employeeRepository() {
-		return new CameraService();
-	} *////TODO: what is that???why???
-
-	/*@Bean
-	CameraWebClient cameraWebClient(CameraDataAggregatedOperations cameraDataAggregatedOperations)  {
-		return new CameraWebClient(cameraDataAggregatedOperations);
-	}*/
 
 	public static void main(String[] args) {
 		SpringApplication.run(CameraDataServiceApplication.class, args);
-
-		//CameraWebClient cameraWebClient = ApplicationContext.getBean();
 
 		ApplicationContext context =
 				new AnnotationConfigApplicationContext(CameraDataServiceApplication.class);

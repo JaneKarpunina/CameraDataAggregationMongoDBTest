@@ -24,9 +24,4 @@ public class CameraSourceController {
         return cameraService.findSourceById(id);
     }
 
-   /* @PostMapping
-    public Mono<Camera> addCameraSources(@RequestBody Camera camera) {
-        return cameraService.addCamera(camera);
-    }*/
-
 }

@@ -32,8 +32,6 @@ public class CameraDataAggregatedSubscriber implements Subscriber<CameraDataAggr
         LOGGER.info("Camera data aggregated : {}", element);
 
         element.setId(element.getCameraSourceId());
-
-        //TODO: inject operations in CameraWebClient and give it to this subscriber;try this too
         cameraDataAggregatedOperations.save(element);
         subscription.request(1);
     }

@@ -9,7 +9,6 @@ import java.util.Objects;
 public class CameraDataAggregated {
 
 
-
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
