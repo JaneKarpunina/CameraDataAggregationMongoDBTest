@@ -11,21 +11,21 @@ import reactor.core.publisher.Mono;
 public class CameraDataAggregatedOperations {
 
 
-    private final CameraDataAggregatedRepoTest cameraDataAggregatedRepoTest;
+    private final CameraDataAggregatedRepoTest cameraDataAggregatedRepository;
 
     @Autowired
     public CameraDataAggregatedOperations(CameraDataAggregatedRepoTest cameraDataAggregatedRepository) {
-        this.cameraDataAggregatedRepoTest = cameraDataAggregatedRepository;
+        this.cameraDataAggregatedRepository = cameraDataAggregatedRepository;
     }
 
     public Mono<CameraDataAggregated> findById(Integer id) {
-        return cameraDataAggregatedRepoTest.findById(id);
+        return cameraDataAggregatedRepository.findById(id);
     }
 
     public Flux<CameraDataAggregated> findAll() {
-        return cameraDataAggregatedRepoTest.findAll();
+        return cameraDataAggregatedRepository.findAll();
     }
     public void save(CameraDataAggregated cameraDataAggregated) {
-        cameraDataAggregatedRepoTest.save(cameraDataAggregated);
+        cameraDataAggregatedRepository.save(cameraDataAggregated);
     }
 }

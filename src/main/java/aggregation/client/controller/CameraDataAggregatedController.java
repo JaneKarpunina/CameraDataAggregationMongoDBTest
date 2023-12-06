@@ -1,7 +1,6 @@
 package aggregation.client.controller;
 
 
-import aggregation.client.CameraWebClient;
 import aggregation.client.service.CameraDataAggregatedOperations;
 import aggregation.domain.CameraDataAggregated;
 import org.slf4j.Logger;
@@ -16,13 +15,13 @@ public class CameraDataAggregatedController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CameraDataAggregatedController.class);
 
+
+    private final CameraDataAggregatedOperations cameraDataAggregatedOperations;
+
     @Autowired
-    private CameraDataAggregatedOperations cameraDataAggregatedOperations;
-
-    public CameraDataAggregatedController() {
+    public CameraDataAggregatedController(CameraDataAggregatedOperations cameraDataAggregatedOperations) {
+        this.cameraDataAggregatedOperations = cameraDataAggregatedOperations;
     }
-
-
     @GetMapping
     public Flux<CameraDataAggregated> findCameraDataAggregated() {
         cameraDataAggregatedOperations.findAll().subscribe(e -> LOGGER.info("in camera aggregated controller {}", e));

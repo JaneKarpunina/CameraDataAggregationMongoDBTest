@@ -1,17 +1,14 @@
 package aggregation.client.repository;
 
 import aggregation.domain.CameraDataAggregated;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@Service
+@Repository
 public class CameraDataAggregatedRepoTest {
 
     static Map<Integer, CameraDataAggregated> cameraDataAggregatedMap = new HashMap<>();
