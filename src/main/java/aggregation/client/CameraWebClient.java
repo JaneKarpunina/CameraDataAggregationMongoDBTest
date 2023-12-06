@@ -2,6 +2,7 @@ package aggregation.client;
 
 import aggregation.client.service.CameraDataAggregatedOperations;
 import aggregation.domain.Camera;
+import aggregation.domain.CameraDataAggregated;
 import aggregation.reactive.CameraSubscriber;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,7 +40,5 @@ public class CameraWebClient {
         Scheduler cameraScheduler = Schedulers.newParallel("Camera scheduler");
 
         cameraFlux.subscribeOn(cameraScheduler).subscribe(new CameraSubscriber(cameraDataAggregatedOperations));
-
-
      }
 }

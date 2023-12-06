@@ -1,6 +1,6 @@
 package aggregation.client.service;
 
-import aggregation.client.repository.CameraDataAggregatedRepository;
+import aggregation.client.repository.CameraDataAggregatedRepoTest;
 import aggregation.domain.CameraDataAggregated;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,21 +11,21 @@ import reactor.core.publisher.Mono;
 public class CameraDataAggregatedOperations {
 
 
-    private final CameraDataAggregatedRepository cameraDataAggregatedRepository;
+    private final CameraDataAggregatedRepoTest cameraDataAggregatedRepoTest;
 
     @Autowired
-    public CameraDataAggregatedOperations(CameraDataAggregatedRepository cameraDataAggregatedRepository) {
-        this.cameraDataAggregatedRepository = cameraDataAggregatedRepository;
+    public CameraDataAggregatedOperations(CameraDataAggregatedRepoTest cameraDataAggregatedRepository) {
+        this.cameraDataAggregatedRepoTest = cameraDataAggregatedRepository;
     }
 
-    public Mono<CameraDataAggregated> findById(String id) {
-        return cameraDataAggregatedRepository.findById(id);
+    public Mono<CameraDataAggregated> findById(Integer id) {
+        return cameraDataAggregatedRepoTest.findById(id);
     }
 
     public Flux<CameraDataAggregated> findAll() {
-        return cameraDataAggregatedRepository.findAll();
+        return cameraDataAggregatedRepoTest.findAll();
     }
     public void save(CameraDataAggregated cameraDataAggregated) {
-        cameraDataAggregatedRepository.save(cameraDataAggregated);
+        cameraDataAggregatedRepoTest.save(cameraDataAggregated);
     }
 }
