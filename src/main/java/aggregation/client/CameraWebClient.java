@@ -25,7 +25,7 @@ public class CameraWebClient {
     private final CameraDataAggregatedOperations cameraDataAggregatedOperations;
 
     @Autowired
-    public CameraWebClient(CameraDataAggregatedOperations cameraDataAggregatedOperations) {
+    public CameraWebClient(final CameraDataAggregatedOperations cameraDataAggregatedOperations) {
 
         this.cameraDataAggregatedOperations = cameraDataAggregatedOperations;
     }

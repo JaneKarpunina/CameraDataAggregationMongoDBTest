@@ -6,6 +6,8 @@ import aggregation.client.repository.CameraDataAggregatedRepository;
 import aggregation.client.service.CameraDataAggregatedOperations;
 import aggregation.domain.CameraDataAggregated;
 import aggregation.service.CameraService;
+import com.mongodb.reactivestreams.client.MongoClient;
+import com.mongodb.reactivestreams.client.MongoClients;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -16,6 +18,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.config.AbstractReactiveMongoConfiguration;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
 import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
@@ -23,7 +28,8 @@ import reactor.core.scheduler.Schedulers;
 @EnableAutoConfiguration
 @Configuration
 @ComponentScan(basePackages = {"aggregation.*", "aggregation.client.*"})
-public class CameraDataServiceApplication {
+@EnableMongoRepositories
+public class CameraDataServiceApplication extends AbstractReactiveMongoConfiguration {
 
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(CameraDataServiceApplication.class);
@@ -63,4 +69,15 @@ public class CameraDataServiceApplication {
 
 
 	}
+
+	@Bean
+	public MongoClient mongoClient() {
+		return MongoClients.create("mongodb://localhost:27017");
+	}
+
+	@Override
+	protected String getDatabaseName() {
+		return "cameradataaggregation";
+	}
+
 }

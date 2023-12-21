@@ -6,6 +6,7 @@ import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import reactor.core.publisher.Mono;
 
 public class CameraDataAggregatedSubscriber implements Subscriber<CameraDataAggregated> {
 
@@ -32,7 +33,9 @@ public class CameraDataAggregatedSubscriber implements Subscriber<CameraDataAggr
         LOGGER.info("Camera data aggregated : {}", element);
 
         element.setId(element.getCameraSourceId());
-        cameraDataAggregatedOperations.save(element);
+        Mono<CameraDataAggregated> cameraDataAggregatedMono = cameraDataAggregatedOperations.save(element);
+
+        cameraDataAggregatedMono.subscribe(e -> LOGGER.info("Camera data aggregated, save returned: {}", e));
         subscription.request(1);
     }
 
